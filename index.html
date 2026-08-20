@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aries Yang | Research Portfolio</title>
+  <meta name="description" content="Research portfolio for Aries Yang, focused on computational architecture, generative design, and AI-assisted spatial research.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="image-preview" aria-hidden="true">
+    <img src="" alt="">
+  </div>
+
+  <header class="site-header">
+    <a class="site-name" href="#top">Aries Yang</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#projects">Projects</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="intro-title">
+      <div class="hero__label">Research portfolio / Computational architecture</div>
+      <h1 id="intro-title">A Research for Computational Architecture using Building Data</h1>
+      <div class="hero__summary">
+        <p>
+          Aries Yang is a PhD candidate at the National University of Singapore
+          working across generative design, AI-assisted design modelling,
+          graph-based spatial inference, and computational architecture.
+        </p>
+        <p>
+          This site treats projects as rooms: selected research can be opened,
+          compared, and read through its evidence, images, methods, and dates.
+        </p>
+      </div>
+      <dl class="hero__coordinates" aria-label="Research coordinates">
+        <div>
+          <dt>Mode</dt>
+          <dd>Image-led research</dd>
+        </div>
+        <div>
+          <dt>Grid</dt>
+          <dd>Clickable rooms</dd>
+        </div>
+        <div>
+          <dt>Palette</dt>
+          <dd>Pastel system</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="projects" class="section section--map" aria-labelledby="projects-title">
+      <div class="section__heading">
+        <span>01</span>
+        <h2 id="projects-title">Project Rooms</h2>
+      </div>
+
+      <div class="map-layout">
+        <aside class="project-index" aria-label="Project index">
+          <p class="eyebrow">Visible count</p>
+          <strong>04 research rooms</strong>
+          <p>
+            Empty cells are left visible on purpose, following the brief:
+            the page does not need to fill every space.
+          </p>
+        </aside>
+
+        <div class="research-map" aria-label="Interactive research floor plan">
+          <button class="map-room is-active" type="button" data-project="facade">
+            <span class="room-number">01</span>
+            <span>Facade to Interior</span>
+          </button>
+          <button class="map-room" type="button" data-project="walls">
+            <span class="room-number">02</span>
+            <span>Internal Wall Inference</span>
+          </button>
+          <button class="map-room" type="button" data-project="segmentation">
+            <span class="room-number">03</span>
+            <span>Interior Segmentation</span>
+          </button>
+          <button class="map-room" type="button" data-project="accessibility">
+            <span class="room-number">04</span>
+            <span>Accessibility Indices</span>
+          </button>
+          <div class="map-empty" aria-hidden="true"></div>
+          <div class="map-empty map-empty--wide" aria-hidden="true"></div>
+          <div class="map-empty" aria-hidden="true"></div>
+          <div class="map-empty" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="project-panels">
+        <article class="project-panel is-active" id="project-facade">
+          <div class="project-panel__rail" aria-hidden="true">
+            <span>R-01</span>
+            <span>X: FACADE</span>
+            <span>Y: GRAPH</span>
+          </div>
+          <div class="project-panel__meta">
+            <span>2026</span>
+            <span>CAADRIA</span>
+            <span>Image-to-graph framework</span>
+          </div>
+          <div class="project-panel__content">
+            <h3>Exterior to Interior: An Image-to-Graph Framework for Predicting Structural Graphs from Facade Images</h3>
+            <p>
+              A research project connecting facade imagery, photogrammetry,
+              detection models, synthetic data, and graph neural networks to infer
+              spatial and structural information from visible building data.
+            </p>
+          </div>
+          <figure class="project-panel__image">
+            <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide2.png" alt="Framework diagram for facade to spatial inference research.">
+            <figcaption>Overall framework, shown as a sequence from facade data to graph prediction.</figcaption>
+          </figure>
+        </article>
+
+        <article class="project-panel" id="project-walls">
+          <div class="project-panel__rail" aria-hidden="true">
+            <span>R-02</span>
+            <span>X: HDB</span>
+            <span>Y: WALLS</span>
+          </div>
+          <div class="project-panel__meta">
+            <span>2025</span>
+            <span>HDB research</span>
+            <span>Graph neural networks</span>
+          </div>
+          <div class="project-panel__content">
+            <h3>Inferring Internal Wall Configurations in HDBs Using Heterogeneous Graph Neural Networks</h3>
+            <p>
+              A research sequence using graph-based prediction, error analysis,
+              validation overlays, and cost / embodied-carbon evaluation to study
+              hidden internal spatial conditions.
+            </p>
+          </div>
+          <figure class="project-panel__image">
+            <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide10.png" alt="Validation overlay with displacement lines showing prediction error.">
+            <figcaption>Validation overlay and displacement lines used to read prediction errors.</figcaption>
+          </figure>
+        </article>
+
+        <article class="project-panel" id="project-segmentation">
+          <div class="project-panel__rail" aria-hidden="true">
+            <span>R-03</span>
+            <span>X: ROOM</span>
+            <span>Y: MODEL</span>
+          </div>
+          <div class="project-panel__meta">
+            <span>2026</span>
+            <span>Segmentation</span>
+            <span>3D interior reconstruction</span>
+          </div>
+          <div class="project-panel__content">
+            <h3>Interior Segmentation and AI-Assisted 3D Spatial Capture</h3>
+            <p>
+              A set of visual experiments around interior segmentation,
+              AI-assisted object recognition, and 3D reconstruction using
+              provided spatial image assets.
+            </p>
+          </div>
+          <figure class="project-panel__image">
+            <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide16.png" alt="Interior segmentation examples with color-coded spatial regions.">
+            <figcaption>Interior images, segmentation masks, and reconstructed spatial fragments.</figcaption>
+          </figure>
+        </article>
+
+        <article class="project-panel" id="project-accessibility">
+          <div class="project-panel__rail" aria-hidden="true">
+            <span>R-04</span>
+            <span>X: ESTATE</span>
+            <span>Y: INDEX</span>
+          </div>
+          <div class="project-panel__meta">
+            <span>2024</span>
+            <span>NUS-Tsinghua PhD Forum</span>
+            <span>Urban form analysis</span>
+          </div>
+          <div class="project-panel__content">
+            <h3>Single-Block Accessibility Indices for Estate Urban Form Analysis: Queenstown and Punggol HDB Towns</h3>
+            <p>
+              A research study listed in the CV, focused on HDB urban form and
+              accessibility indices across Queenstown and Punggol.
+            </p>
+          </div>
+          <figure class="project-panel__image">
+            <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide7.png" alt="Architectural drawings of HDB block layouts.">
+            <figcaption>Architectural block drawings used as urban-form evidence.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="section__heading">
+        <span>02</span>
+        <h2 id="work-title">Work History</h2>
+      </div>
+
+      <div class="timeline">
+        <article>
+          <span>2024 Mar - Present</span>
+          <h3>Researcher, Generative Design Modeling with AI</h3>
+          <p>Creative Design Critical Data Lab, NUS</p>
+        </article>
+        <article>
+          <span>2024 Mar - 2025 Aug</span>
+          <h3>Researcher, Generative Design Modeling with AI</h3>
+          <p>Future Cities Lab Global, Singapore-ETH Centre</p>
+        </article>
+        <article>
+          <span>2025 Aug - Present</span>
+          <h3>Adjunct Teaching Fellow</h3>
+          <p>NUS</p>
+        </article>
+        <article>
+          <span>2022 Jun - 2022 Jul</span>
+          <h3>Architecture Intern</h3>
+          <p>DP Architects</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section section--split" aria-labelledby="skills-title">
+      <div class="section__heading">
+        <span>03</span>
+        <h2 id="skills-title">Skills + Methods</h2>
+      </div>
+
+      <div class="split-grid">
+        <div>
+          <h3>Design + Research Skills</h3>
+          <ul class="tag-list">
+            <li>Parametric computation</li>
+            <li>Data analytics</li>
+            <li>Simulation analysis</li>
+            <li>Interactive design</li>
+            <li>Machine learning and deep learning modelling</li>
+            <li>Computational architecture</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Tools Mentioned In CV</h3>
+          <ul class="tag-list">
+            <li>Rhino</li>
+            <li>Grasshopper</li>
+            <li>Adobe Photoshop</li>
+            <li>Adobe Illustrator</li>
+            <li>Adobe InDesign</li>
+            <li>AutoCAD</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--split" aria-labelledby="personal-title">
+      <div class="section__heading">
+        <span>04</span>
+        <h2 id="personal-title">Personal Layer</h2>
+      </div>
+
+      <div class="split-grid">
+        <div>
+          <h3>Hobbies + Interests</h3>
+          <ul class="hobby-grid">
+            <li>Painting</li>
+            <li>Music</li>
+            <li>Video games</li>
+            <li>Fishing</li>
+            <li>Travelling</li>
+            <li>Fitness</li>
+            <li>Boxing</li>
+            <li>Kayaking</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Content Still To Add</h3>
+          <p class="placeholder">
+            Placeholder: add a short bio, preferred contact text, and any missing
+            project descriptions from `DESIGN.md` when ready.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="section__heading">
+        <span>05</span>
+        <h2 id="contact-title">Contact</h2>
+      </div>
+      <p>Email and phone are present in the private CV. Add public-facing contact links here only if you want them published on GitHub Pages.</p>
+      <a href="#top">Back to top</a>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

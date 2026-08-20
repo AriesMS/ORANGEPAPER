@@ -1,0 +1,6 @@
+# Keep private source material out of the public repository
+private-inputs/
+
+# Common local files
+.DS_Store
+Thumbs.db
