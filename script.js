@@ -29,7 +29,7 @@
       cursor.style.top = event.clientY + 'px';
     });
 
-    document.querySelectorAll('a, button, .project-panel__image').forEach(function (element) {
+    document.querySelectorAll('a, button, .project-panel__image, .map-viewport').forEach(function (element) {
       element.addEventListener('mouseenter', function () {
         cursor.classList.add('is-ring');
       });
@@ -38,6 +38,63 @@
         cursor.classList.remove('is-ring');
       });
     });
+  }
+
+  // Map panning: the research floor plan can be dragged within its viewport,
+  // desktop only, matching the brief's "move the image like a map" move.
+  var mapViewport = document.querySelector('.map-viewport');
+  var mapGrid = document.querySelector('.research-map');
+
+  if (mapViewport && mapGrid && window.matchMedia('(min-width: 861px)').matches) {
+    var maxPan = 36;
+    var isPanning = false;
+    var didPan = false;
+    var startX = 0;
+    var startY = 0;
+    var originX = 0;
+    var originY = 0;
+    var currentX = 0;
+    var currentY = 0;
+
+    mapViewport.addEventListener('pointerdown', function (event) {
+      isPanning = true;
+      didPan = false;
+      startX = event.clientX;
+      startY = event.clientY;
+      originX = currentX;
+      originY = currentY;
+      mapViewport.setPointerCapture(event.pointerId);
+    });
+
+    mapViewport.addEventListener('pointermove', function (event) {
+      if (!isPanning) {
+        return;
+      }
+      var dx = event.clientX - startX;
+      var dy = event.clientY - startY;
+      if (Math.abs(dx) > 4 || Math.abs(dy) > 4) {
+        didPan = true;
+      }
+      currentX = Math.max(-maxPan, Math.min(maxPan, originX + dx));
+      currentY = Math.max(-maxPan, Math.min(maxPan, originY + dy));
+      mapGrid.style.transform = 'translate(' + currentX + 'px, ' + currentY + 'px)';
+    });
+
+    mapViewport.addEventListener('pointerup', function () {
+      isPanning = false;
+    });
+
+    mapViewport.addEventListener('pointerleave', function () {
+      isPanning = false;
+    });
+
+    // A drag that moved past the threshold should not also register as a room click.
+    mapGrid.addEventListener('click', function (event) {
+      if (didPan) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    }, true);
   }
 
   if (preview && previewImage) {

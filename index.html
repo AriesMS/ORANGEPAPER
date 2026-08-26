@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aries Yang | Research Portfolio</title>
   <meta name="description" content="Research portfolio for Aries Yang, focused on computational architecture, generative design, and AI-assisted spatial research.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,20 +41,6 @@
           compared, and read through its evidence, images, methods, and dates.
         </p>
       </div>
-      <dl class="hero__coordinates" aria-label="Research coordinates">
-        <div>
-          <dt>Mode</dt>
-          <dd>Image-led research</dd>
-        </div>
-        <div>
-          <dt>Grid</dt>
-          <dd>Clickable rooms</dd>
-        </div>
-        <div>
-          <dt>Palette</dt>
-          <dd>Pastel system</dd>
-        </div>
-      </dl>
     </section>
 
     <section id="projects" class="section section--map" aria-labelledby="projects-title">
@@ -65,32 +54,31 @@
           <p class="eyebrow">Visible count</p>
           <strong>04 research rooms</strong>
           <p>
-            Empty cells are left visible on purpose, following the brief:
+            The grid is left unfilled on purpose, following the brief:
             the page does not need to fill every space.
           </p>
+          <p class="eyebrow map-hint">Drag the map to pan it</p>
         </aside>
 
-        <div class="research-map" aria-label="Interactive research floor plan">
-          <button class="map-room is-active" type="button" data-project="facade">
-            <span class="room-number">01</span>
-            <span>Facade to Interior</span>
-          </button>
-          <button class="map-room" type="button" data-project="walls">
-            <span class="room-number">02</span>
-            <span>Internal Wall Inference</span>
-          </button>
-          <button class="map-room" type="button" data-project="segmentation">
-            <span class="room-number">03</span>
-            <span>Interior Segmentation</span>
-          </button>
-          <button class="map-room" type="button" data-project="accessibility">
-            <span class="room-number">04</span>
-            <span>Accessibility Indices</span>
-          </button>
-          <div class="map-empty" aria-hidden="true"></div>
-          <div class="map-empty map-empty--wide" aria-hidden="true"></div>
-          <div class="map-empty" aria-hidden="true"></div>
-          <div class="map-empty" aria-hidden="true"></div>
+        <div class="map-viewport">
+          <div class="research-map" aria-label="Interactive research floor plan, draggable">
+            <button class="map-room is-active" type="button" data-project="facade">
+              <span class="room-number">01</span>
+              <span>Facade to Interior</span>
+            </button>
+            <button class="map-room" type="button" data-project="walls">
+              <span class="room-number">02</span>
+              <span>Internal Wall Inference</span>
+            </button>
+            <button class="map-room" type="button" data-project="segmentation">
+              <span class="room-number">03</span>
+              <span>Interior Segmentation</span>
+            </button>
+            <button class="map-room" type="button" data-project="accessibility">
+              <span class="room-number">04</span>
+              <span>Accessibility Indices</span>
+            </button>
+          </div>
         </div>
       </div>
 
