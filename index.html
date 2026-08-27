@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
   <div class="cursor-dot" aria-hidden="true"></div>
@@ -52,7 +52,7 @@
       <div class="map-layout">
         <aside class="project-index" aria-label="Project index">
           <p class="eyebrow">Visible count</p>
-          <strong>04 research rooms</strong>
+          <strong>03 research rooms</strong>
           <p>
             The grid is left unfilled on purpose, following the brief:
             the page does not need to fill every space.
@@ -73,10 +73,6 @@
             <button class="map-room" type="button" data-project="segmentation">
               <span class="room-number">03</span>
               <span>Interior Segmentation</span>
-            </button>
-            <button class="map-room" type="button" data-project="accessibility">
-              <span class="room-number">04</span>
-              <span>Accessibility Indices</span>
             </button>
           </div>
         </div>
@@ -102,10 +98,20 @@
               spatial and structural information from visible building data.
             </p>
           </div>
-          <figure class="project-panel__image">
-            <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide2.png" alt="Framework diagram for facade to spatial inference research.">
-            <figcaption>Overall framework, shown as a sequence from facade data to graph prediction.</figcaption>
-          </figure>
+          <div class="project-gallery" data-project="facade" aria-label="Facade to Interior slides">
+            <figure class="project-panel__image">
+              <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide2.png" alt="Facade to Interior slide 2.">
+              <figcaption>Slides 2-7: facade image evidence moving toward inferred interior structure.</figcaption>
+            </figure>
+            <div class="slide-strip" aria-label="Choose a Facade to Interior slide">
+              <button class="slide-thumb is-active" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide2.png" data-alt="Facade to Interior slide 2."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide2.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide3.png" data-alt="Facade to Interior slide 3."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide3.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide4.png" data-alt="Facade to Interior slide 4."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide4.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide5.png" data-alt="Facade to Interior slide 5."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide5.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide6.png" data-alt="Facade to Interior slide 6."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide6.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide7.png" data-alt="Facade to Interior slide 7."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide7.png" alt=""></button>
+            </div>
+          </div>
         </article>
 
         <article class="project-panel" id="project-walls">
@@ -127,10 +133,20 @@
               hidden internal spatial conditions.
             </p>
           </div>
-          <figure class="project-panel__image">
-            <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide10.png" alt="Validation overlay with displacement lines showing prediction error.">
-            <figcaption>Validation overlay and displacement lines used to read prediction errors.</figcaption>
-          </figure>
+          <div class="project-gallery" data-project="walls" aria-label="Interior wall inference slides">
+            <figure class="project-panel__image">
+              <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide8.png" alt="Interior wall inference slide 8.">
+              <figcaption>Slides 8-13: graph-based inference, validation, and wall prediction evidence.</figcaption>
+            </figure>
+            <div class="slide-strip" aria-label="Choose an Interior Wall Inference slide">
+              <button class="slide-thumb is-active" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide8.png" data-alt="Interior wall inference slide 8."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide8.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide9.png" data-alt="Interior wall inference slide 9."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide9.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide10.png" data-alt="Interior wall inference slide 10."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide10.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide11.png" data-alt="Interior wall inference slide 11."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide11.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide12.png" data-alt="Interior wall inference slide 12."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide12.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide13.png" data-alt="Interior wall inference slide 13."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide13.png" alt=""></button>
+            </div>
+          </div>
         </article>
 
         <article class="project-panel" id="project-segmentation">
@@ -152,34 +168,21 @@
               provided spatial image assets.
             </p>
           </div>
-          <figure class="project-panel__image">
-            <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide16.png" alt="Interior segmentation examples with color-coded spatial regions.">
-            <figcaption>Interior images, segmentation masks, and reconstructed spatial fragments.</figcaption>
-          </figure>
-        </article>
-
-        <article class="project-panel" id="project-accessibility">
-          <div class="project-panel__rail" aria-hidden="true">
-            <span>R-04</span>
-            <span>X: ESTATE</span>
-            <span>Y: INDEX</span>
+          <div class="project-gallery" data-project="segmentation" aria-label="Interior segmentation slides">
+            <figure class="project-panel__image">
+              <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide15.png" alt="Interior segmentation slide 15.">
+              <figcaption>Slides 15-21: interior segmentation, object reading, and reconstructed spatial fragments.</figcaption>
+            </figure>
+            <div class="slide-strip" aria-label="Choose an Interior Segmentation slide">
+              <button class="slide-thumb is-active" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide15.png" data-alt="Interior segmentation slide 15."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide15.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide16.png" data-alt="Interior segmentation slide 16."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide16.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide17.png" data-alt="Interior segmentation slide 17."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide17.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide18.png" data-alt="Interior segmentation slide 18."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide18.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide19.png" data-alt="Interior segmentation slide 19."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide19.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide20.png" data-alt="Interior segmentation slide 20."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide20.png" alt=""></button>
+              <button class="slide-thumb" type="button" data-slide="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide21.png" data-alt="Interior segmentation slide 21."><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide21.png" alt=""></button>
+            </div>
           </div>
-          <div class="project-panel__meta">
-            <span>2024</span>
-            <span>NUS-Tsinghua PhD Forum</span>
-            <span>Urban form analysis</span>
-          </div>
-          <div class="project-panel__content">
-            <h3>Single-Block Accessibility Indices for Estate Urban Form Analysis: Queenstown and Punggol HDB Towns</h3>
-            <p>
-              A research study listed in the CV, focused on HDB urban form and
-              accessibility indices across Queenstown and Punggol.
-            </p>
-          </div>
-          <figure class="project-panel__image">
-            <img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/Slide7.png" alt="Architectural drawings of HDB block layouts.">
-            <figcaption>Architectural block drawings used as urban-form evidence.</figcaption>
-          </figure>
         </article>
       </div>
     </section>
@@ -287,6 +290,6 @@
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

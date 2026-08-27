@@ -17,9 +17,34 @@
     });
   }
 
-  rooms.forEach(function (room) {
-    room.addEventListener('click', function () {
-      showProject(room.dataset.project);
+  document.addEventListener('click', function (event) {
+    var room = event.target.closest('.map-room');
+
+    if (!room) {
+      return;
+    }
+
+    event.preventDefault();
+    showProject(room.dataset.project);
+  });
+
+  document.querySelectorAll('.project-gallery').forEach(function (gallery) {
+    var mainImage = gallery.querySelector('.project-panel__image img');
+    var thumbs = gallery.querySelectorAll('.slide-thumb');
+
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        if (!mainImage) {
+          return;
+        }
+
+        mainImage.src = thumb.dataset.slide;
+        mainImage.alt = thumb.dataset.alt || '';
+
+        thumbs.forEach(function (item) {
+          item.classList.toggle('is-active', item === thumb);
+        });
+      });
     });
   });
 
@@ -57,6 +82,10 @@
     var currentY = 0;
 
     mapViewport.addEventListener('pointerdown', function (event) {
+      if (event.target.closest('.map-room')) {
+        return;
+      }
+
       isPanning = true;
       didPan = false;
       startX = event.clientX;
@@ -86,14 +115,16 @@
 
     mapViewport.addEventListener('pointerleave', function () {
       isPanning = false;
+      didPan = false;
     });
 
     // A drag that moved past the threshold should not also register as a room click.
     mapGrid.addEventListener('click', function (event) {
-      if (didPan) {
+      if (didPan && !event.target.closest('.map-room')) {
         event.stopPropagation();
         event.preventDefault();
       }
+      didPan = false;
     }, true);
   }
 
