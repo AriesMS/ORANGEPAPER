@@ -3,19 +3,46 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Facade to Interior / Aries' Phd Construct</title>
-<meta name="description" content="An image-to-graph framework for predicting structural graphs from facade images. Project page in preparation.">
-<link rel="stylesheet" href="journey.css?v=7"><script src="journey.js?v=7" defer></script>
+<meta name="description" content="Explore the HDB facade module in an exploded image-to-graph research study.">
+<link rel="stylesheet" href="journey.css?v=7">
+<link rel="stylesheet" href="facade-study.css?v=3">
+<script src="facade-study.js?v=3" defer></script>
 </head>
-<body class="project-placeholder" data-project="02">
+<body class="facade-study">
 <main>
 <a class="return-link" href="index.html">&larr; Back to construct</a>
-<canvas id="construct" tabindex="0" aria-label="Rotatable project fragment. Drag to rotate, scroll or pinch to zoom. Arrow keys rotate and plus or minus zoom."></canvas>
-<article class="project-note">
-<p class="detail-type">FRAGMENT 02 / 2026 / CAADRIA</p>
-<h1>Facade to Interior</h1>
-<p class="description">An image-to-graph framework for predicting structural graphs from facade images.</p>
-<p class="placeholder-status">Project page in preparation.<br>Research, drawings, and findings to follow.</p>
+<header class="study-heading"><p class="detail-type">FRAGMENT 02 / 2026 / CAADRIA</p><h1>Facade to Interior</h1></header>
+<div class="scroll-sequence" tabindex="0" aria-label="Exploded study. Scroll down or use the right arrow key to move through the stages.">
+<section class="module-view scroll-stage" aria-label="HDB building module from the exploded project image">
+<h2 class="stage-label">01 / HDB building module</h2>
+<div class="model-crop">
+<img class="module-image" src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/facade-to-interior/Module_to_facade_graphBoth.png" alt="Axonometric HDB building module showing its front facade and interior walls.">
+<button class="facade-target" aria-label="Explore HDB facade module" aria-describedby="module-label" aria-expanded="false"></button>
+</div>
+<div class="module-dialogue" id="module-label" role="status" hidden><span class="detail-type">01 / FACADE</span><h2>HDB facade module</h2></div>
+</section>
+<section class="scroll-stage" aria-labelledby="stage-02">
+<h2 class="stage-label" id="stage-02">02 / Facade geometry</h2>
+<div class="explosion-crop facade-crop"><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/facade-to-interior/Module_to_facade_graphBoth.png" alt="Extracted facade geometry from the HDB module."></div>
+</section>
+<section class="scroll-stage" aria-labelledby="stage-03">
+<h2 class="stage-label" id="stage-03">03 / Structural graph</h2>
+<div class="explosion-crop structure-crop"><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/facade-to-interior/Module_to_facade_graphBoth.png" alt="Structural graph extracted from the building module."></div>
+</section>
+<section class="scroll-stage" aria-labelledby="stage-04">
+<h2 class="stage-label" id="stage-04">04 / Facade graph</h2>
+<div class="explosion-crop graph-crop"><img src="BPS5231_L2_DesignBeyondCode_StudentKit/assets/facade-to-interior/Module_to_facade_graphBoth.png" alt="Facade graph from the exploded research sequence."></div>
+</section>
+<section class="scroll-stage end-stage" aria-labelledby="end-title">
+<!-- EDIT PROJECT TEXT HERE: replace the heading and paragraphs inside this article. -->
+<article class="end-dialogue" id="project-dialogue">
+<p class="detail-type">Project Notes</p>
+<h2 id="end-title">From facade to graph</h2>
+<p>This project looks at inferencing the interior layout from the facade geometry of HDB building modules. This is done by extracting the geometry into a graph representation and then inferencing the interior graph based on the exterior graph.</p>
 </article>
-<aside class="inspector" hidden aria-label="Fragment details"><button id="close-detail" aria-label="Close details">&times;</button><div id="detail" aria-live="polite"></div></aside>
+</section>
+</div>
+<p class="scroll-hint">SCROLL TO EXPLORE &rarr;</p>
 </main>
-</body></html>
+</body>
+</html>
