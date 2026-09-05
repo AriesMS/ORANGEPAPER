@@ -635,3 +635,43 @@ figcaption {
     grid-column: auto;
   }
 }
+
+/* Project detail: the same drawing-sheet palette and typography as the index. */
+a.map-room { text-decoration: none; }
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: fit-content;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--accent);
+  background: var(--peach);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.project-link:hover { background: var(--green); }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+.project-hero { min-height: auto; padding-top: 32px; gap: 28px; }
+.project-hero .back-link { margin-bottom: 24px; }
+.project-hero h1 { font-size: clamp(3rem, 10vw, 8rem); }
+.project-copy { margin-top: 18px; }
+.evidence-intro { max-width: 640px; margin-bottom: 28px; }
+.project-page .project-panel__image img { aspect-ratio: 16 / 9; }
+.project-page .project-panel__image:hover img { transform: none; }
+.project-page .slide-thumb img { object-fit: contain; }
+.project-page .slide-thumb { color: var(--ink); }
+.project-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-top: 32px; }
+.project-page section { scroll-margin-top: 80px; }
+@media (max-width: 560px) {
+  .project-page .slide-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

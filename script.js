@@ -20,7 +20,7 @@
   document.addEventListener('click', function (event) {
     var room = event.target.closest('.map-room');
 
-    if (!room) {
+    if (!room || room.tagName === 'A') {
       return;
     }
 
@@ -43,6 +43,7 @@
 
         thumbs.forEach(function (item) {
           item.classList.toggle('is-active', item === thumb);
+          item.setAttribute('aria-pressed', String(item === thumb));
         });
       });
     });
