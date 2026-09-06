@@ -5,6 +5,6 @@
   },
   "private": true,
   "scripts": {
-    "build": "esbuild journey-source.js --bundle --minify --format=iife --outfile=journey.js"
+    "build": "esbuild journey-source.js --bundle --minify --format=iife --outfile=journey.js && esbuild facade-study-source.js --bundle --minify --format=iife --outfile=facade-study.js"
   }
 }

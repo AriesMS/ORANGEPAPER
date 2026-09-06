@@ -33,3 +33,6 @@
 .scroll-hint{z-index:4}
 @media(max-width:650px){.scroll-stage{width:60vw;height:46svh}.scroll-stage .stage-label{font-size:19px;bottom:-45px}.end-stage{left:5vw;right:5vw;bottom:6svh;height:27svh}.scroll-stage .module-dialogue{left:5%;top:100%;font-size:12px}.study-heading{top:70px}.study-heading h1{font-size:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Keep the restored study aligned with the current site typography. */
+.facade-study .scroll-hint{font-family:var(--site-text-font)}

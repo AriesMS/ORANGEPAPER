@@ -20,3 +20,6 @@
 .construct-cursor.is-link{color:#f2c928}.construct-cursor.is-dragging::before{transform:rotate(90deg);border-style:dashed}
 @media(hover:hover) and (pointer:fine){.has-construct-cursor,.has-construct-cursor canvas,.has-construct-cursor a,.has-construct-cursor button{cursor:none!important}.construct-cursor.is-visible{display:block}}
 @media(prefers-reduced-motion:reduce){.construct-cursor::before{transition:none}}
+
+.motion-toggle{position:absolute;bottom:22px;left:24px;z-index:4;border:1px solid #365d80;background:#000;color:#91bade;padding:10px 14px;font-size:10px;cursor:pointer}
+@media(max-width:650px){body:has(.inspector:not([hidden])) .motion-toggle{bottom:auto;top:80px}}

@@ -1,0 +1,20 @@
+/* Site typography — 2026-09-06.
+   Original fonts and rollback instructions: TYPOGRAPHY.md. */
+:root {
+  --site-title-font: "Bauhaus", "Bauhaus 93", sans-serif;
+  --site-text-font: "IBM Plex Mono", monospace;
+}
+body,
+body.facade-study {
+  font-family: var(--site-text-font);
+  --study-text-font: var(--site-text-font);
+  --study-title-font: var(--site-title-font);
+}
+h1, h2, h3, h4, h5, h6,
+.facade-study :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--site-title-font);
+}
+button, input, select, textarea,
+.renderer-error {
+  font-family: var(--site-text-font);
+}

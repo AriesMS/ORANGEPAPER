@@ -31,7 +31,7 @@ There are no lights or photorealistic materials. Flat colour textures appear on 
 
 All four pages load `typography.css` last. Heading elements, including dynamically inserted inspector titles, use **Bauhaus**. Text, metadata, navigation, and controls use **IBM Plex Mono**. The fonts are resolved from local installations; sans-serif and monospace fallbacks apply on other devices. No font files are bundled.
 
-Metadata is small with expanded letter spacing. Titles remain restrained on the home page and become larger within project content. Original Courier New styles and rollback steps are recorded in `../TYPOGRAPHY.md`.
+Metadata is small with expanded letter spacing. Titles remain restrained on the home page and become larger within project content. Original Courier New styles and rollback steps are recorded in `TYPOGRAPHY.md`.
 
 ## Pages and content
 
@@ -67,5 +67,3 @@ Keep the carrier light, branching, and subordinate to the projects. Support from
 The ground grid uses bright blue `#5cafff` flat mesh strips at 58% opacity, with thicker lines every five units. Mesh strips provide visible thickness across WebGL platforms. Wheels have unequal radii (0.39 and 0.21 units), with rotation matched to travel distance. The three articulated legs have different reaches, widths, feet, and stride heights.
 
 A damped spring suspension responds to irregular terrain waves. The carrier heaves gently as a unit; each project has its own mass and smaller delayed bounce. This is a procedural weight simulation, not a collision solver. Visible wires, selected surfaces, and picking meshes share each displacement. Legs follow the carrier’s moving attachment point, while the wheels have a smaller terrain response. Existing pause, reduced-motion, and hidden-tab behaviour remains in effect.
-
-The canonical site design document is [the repository-root DESIGN.md](../DESIGN.md).

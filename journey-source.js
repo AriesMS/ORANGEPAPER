@@ -1,7 +1,9 @@
+import { createCarrierMotion } from './carrier-motion.js';
+import { assembly, researchCarrier } from './construct-geometry.js';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 let records = [
-  {id:'01',title:'PhD / Computational architecture',year:'Ongoing',type:'RESEARCH FOUNDATION',place:'National University of Singapore',text:'Research across generative design, AI-assisted design modelling, graph-based spatial inference, and computational architecture.',shape:'sphere',p:[0,0,0],s:1.25},
+  {id:'01',title:'PhD / Computational architecture',year:'Ongoing',type:'OVERARCHING RESEARCH',place:'National University of Singapore',text:'The overarching research framework connecting generative design, AI-assisted design modelling, graph-based spatial inference, and computational architecture. A branching, walking research construct carries the projects, collaborations, teaching, and practice as an evolving city of ideas. Three open docking arms reach into empty space for future work.',shape:'sphere',p:[0,0,0],s:1.25},
   {id:'02',title:'Facade to Interior',year:'2026',type:'RESEARCH PROJECT',place:'CAADRIA',text:'An image-to-graph framework for predicting structural graphs from facade images. Connecting photogrammetry, detection models, synthetic data, and graph neural networks.',shape:'box',p:[-1.65,.75,.3],s:1.1,link:'facade-to-interior.html'},
   {id:'03',title:'Internal Wall Inference',year:'2025',type:'RESEARCH PROJECT',place:'HDB research',text:'Inferring internal wall configurations using heterogeneous graph neural networks. Exploring prediction, validation overlays, and cost and embodied-carbon evaluation.',shape:'pyramid',p:[1.35,1.25,-.1],s:1.2,link:'internal-wall-inference.html'},
   {id:'04',title:'Interior Segmentation',year:'2026',type:'RESEARCH PROJECT',place:'3D spatial reconstruction',text:'Visual experiments in interior segmentation, AI-assisted object recognition, and 3D reconstruction of spatial fragments.',shape:'torus',p:[1.6,-.6,.5],s:1.05,link:'interior-segmentation.html'},
@@ -30,74 +32,6 @@ const canvas=document.querySelector('#construct');
 const detail=document.querySelector('#detail');
 const inspector=document.querySelector('.inspector');
 function display(i){inspector.hidden=i<0;if(i<0){detail.innerHTML='';return;}const r=records[i];detail.innerHTML=`<p class="detail-number">${r.id}<span style="font-size:12px;letter-spacing:0"> / 08</span></p><span class="detail-type">${r.type}</span><h2>${r.title}</h2><dl><div><dt>PERIOD</dt><dd>${r.year}</dd></div><div><dt>CONTEXT</dt><dd>${r.place}</dd></div></dl><p class="description">${r.text}</p>${r.link&&!projectId?`<a class="project-action" href="${r.link}">OPEN PROJECT ↗</a>`:''}`;}
-function geometry(type, coarse=false){let v=[],faces=[];if(type==='box'){v=[[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];faces=[[0,1,2,3],[4,5,6,7],[0,1,5,4],[2,3,7,6],[0,3,7,4],[1,2,6,5]];}else if(type==='pyramid'){v=[[-1,-1,-1],[1,-1,-1],[1,-1,1],[-1,-1,1],[0,1.4,0]];faces=[[0,1,2,3],[0,1,4],[1,2,4],[2,3,4],[3,0,4]];}else{const rows=coarse?4:12,cols=coarse?8:24;for(let j=0;j<=rows;j++){const a=j/rows*Math.PI*(type==='torus'?2:1);for(let k=0;k<cols;k++){const b=k/cols*Math.PI*2;v.push(type==='torus'?[(.85+.28*Math.cos(a))*Math.cos(b),(.85+.28*Math.cos(a))*Math.sin(b),.28*Math.sin(a)]:[Math.sin(a)*Math.cos(b),Math.cos(a),Math.sin(a)*Math.sin(b)]);}}for(let j=0;j<rows;j++)for(let k=0;k<cols;k++){const n=j*cols+k,m=j*cols+(k+1)%cols;faces.push([n,m,m+cols,n+cols]);}}
-const edges=new Map();faces.forEach(f=>f.forEach((a,i)=>{const b=f[(i+1)%f.length];edges.set([Math.min(a,b),Math.max(a,b)].join(','),[a,b]);}));
-// Subdivide planar surfaces with wire lines, retaining the original faces for picking.
-const mix=(a,b,t)=>a.map((value,i)=>value+(b[i]-value)*t);
-function wire(a,b){const n=v.length;v.push(a,b);edges.set('grid-'+n,[n,n+1]);}
-if(type==='box'||type==='pyramid'){
-  faces.forEach(face=>{
-    const points=face.map(i=>v[i]);
-    for(let step=1;step<9;step++){
-      const t=step/9;
-      if(points.length===4){
-        wire(mix(points[0],points[1],t),mix(points[3],points[2],t));
-        wire(mix(points[0],points[3],t),mix(points[1],points[2],t));
-      }else{
-        // Three families of lines form a triangular lattice on pyramid faces.
-        for(let side=0;side<3;side++){
-          wire(mix(points[side],points[(side+1)%3],t),mix(points[side],points[(side+2)%3],t));
-        }
-      }
-    }
-  });
-}
-return {v,faces,edges:[...edges.values()]};}
-// Each research fragment is a small inhabitable machine: a core, pods,
-// collars, antennae and articulated supports. All parts share one pick target.
-function assembly(r, coarse=false){
-  const result={v:[],faces:[],edges:[]};
-  function part(type,position,scale,angle=0){
-    const g=geometry(type,coarse),offset=result.v.length;
-    g.v.forEach(([x,y,z])=>{
-      x*=scale[0];y*=scale[1];z*=scale[2];
-      result.v.push([x*Math.cos(angle)-y*Math.sin(angle)+position[0],x*Math.sin(angle)+y*Math.cos(angle)+position[1],z+position[2]]);
-    });
-    g.faces.forEach(f=>result.faces.push(f.map(i=>i+offset)));
-    g.edges.forEach(e=>result.edges.push(e.map(i=>i+offset)));
-  }
-  function strut(a,b){
-    const n=result.v.length;result.v.push(a,b);result.edges.push([n,n+1]);
-  }
-  part(r.shape,[0,0,0],r.shape==='sphere'?[1,.68,.8]:[.78,.78,.78]);
-  part('torus',[0,-.38,0],[1.04,.38,1.04],.15);
-  // Asymmetric satellite pods and projecting gantries.
-  const flip=Number(r.id)%2?1:-1;
-  for(let k=0;k<3;k++){
-    const x=flip*(.65+k*.25),y=.4+k*.36,z=(k-1)*.48;
-    part(k===1?'box':'sphere',[x,y,z],[.28,.2,.25],k*.25);
-    strut([0,.1,0],[x,y,z]);
-    part('box',[x*.5,y*.5,z*.5],[.035,.035,.5],.6);
-  }
-  for(let side of [-1,1]){
-    const a=[side*.5,-.45,.15],b=[side*1.02,-1.1,.25],c=[side*.82,-1.5,.65];
-    strut(a,b);strut(b,c);
-    strut([a[0]+.09,a[1],a[2]],[b[0]+.09,b[1],b[2]]);
-    strut([b[0]+.09,b[1],b[2]],[c[0]+.09,c[1],c[2]]);
-    part('sphere',b,[.1,.1,.1]);
-    part('box',c,[.25,.045,.25]);
-  }
-  strut([-.3,.4,0],[-.5,1.75,.1]);
-  part('torus',[-.5,1.75,.1],[.28,.28,.12],.5);
-  const rotation=new THREE.Euler(...r.rotation,'XYZ');
-  const transform=new THREE.Matrix4().compose(
-    new THREE.Vector3(...r.p),
-    new THREE.Quaternion().setFromEuler(rotation),
-    new THREE.Vector3(r.s,r.s,r.s)
-  );
-  result.v=result.v.map(point=>new THREE.Vector3(...point).applyMatrix4(transform).toArray());
-  return result;
-}
 
 function start(){
   const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
@@ -106,6 +40,7 @@ function start(){
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(55,1,.1,100);
   camera.position.set(4.8,3.1,9.8);
+  if(!projectId)camera.position.multiplyScalar(1.3);
   const controls=new OrbitControls(camera,canvas);
   controls.enablePan=false;
   controls.enableDamping=false;
@@ -141,14 +76,17 @@ function start(){
     texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());return texture;
   }
   const pickMaterial=new THREE.MeshBasicMaterial({side:THREE.DoubleSide});
+  const carrier=projectId?null:researchCarrier(records.filter(r=>r.id!=='01'));
   records.forEach((r,index)=>{
-    const mesh=assembly(r),positions=[];
-    mesh.edges.forEach(([a,b])=>positions.push(...mesh.v[a],...mesh.v[b]));
+    const isCarrier=r.id==='01'&&carrier;
+    const mesh=isCarrier?carrier:assembly(r),positions=[],lineColours=[];
+    mesh.edges.forEach(([a,b])=>{positions.push(...mesh.v[a],...mesh.v[b]);if(isCarrier)for(const i of [a,b])lineColours.push(...new THREE.Color(mesh.colours[i]).toArray());});
     const geometry=new THREE.BufferGeometry();
     geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));
-    const material=new THREE.LineBasicMaterial({color:0x4191dc,transparent:true,opacity:.48,depthWrite:false});
+    if(isCarrier)geometry.setAttribute('color',new THREE.Float32BufferAttribute(lineColours,3));
+    const material=new THREE.LineBasicMaterial({color:isCarrier?0xffffff:0x4191dc,vertexColors:!!isCarrier,transparent:true,opacity:isCarrier?.55:.48,depthWrite:false});
     const lines=new THREE.LineSegments(geometry,material);root.add(lines);fragments.push(lines);
-    const solidPositions=[],uvs=[];
+    const solidPositions=[],uvs=[],solidColours=[];
     mesh.faces.forEach(face=>{
       // Project each polygon onto its own plane, keeping the pattern attached to it.
       const points=face.map(i=>new THREE.Vector3(...mesh.v[i]));
@@ -161,15 +99,16 @@ function start(){
       const xs=coords.map(p=>p[0]),ys=coords.map(p=>p[1]);
       const minX=Math.min(...xs),minY=Math.min(...ys),dx=Math.max(...xs)-minX||1,dy=Math.max(...ys)-minY||1;
       for(let k=1;k<face.length-1;k++)for(const n of [0,k,k+1]){
-        solidPositions.push(...mesh.v[face[n]]);uvs.push((coords[n][0]-minX)/dx,(coords[n][1]-minY)/dy);
+        solidPositions.push(...mesh.v[face[n]]);if(isCarrier)solidColours.push(...new THREE.Color(mesh.colours[face[n]]).toArray());uvs.push((coords[n][0]-minX)/dx,(coords[n][1]-minY)/dy);
       }
     });
     const solidGeometry=new THREE.BufferGeometry();
     solidGeometry.setAttribute('position',new THREE.Float32BufferAttribute(solidPositions,3));
     solidGeometry.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));
-    const solid=new THREE.Mesh(solidGeometry,new THREE.MeshBasicMaterial({map:colourTexture(index),side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1}));
+    if(isCarrier)solidGeometry.setAttribute('color',new THREE.Float32BufferAttribute(solidColours,3));
+    const solid=new THREE.Mesh(solidGeometry,new THREE.MeshBasicMaterial({map:isCarrier?null:colourTexture(index),color:0xffffff,vertexColors:!!isCarrier,transparent:!!isCarrier,opacity:isCarrier?.28:1,depthWrite:!isCarrier,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1}));
     solid.visible=false;root.add(solid);surfaces.push(solid);
-    const proxy=assembly(r,true),triangles=[];
+    const proxy=isCarrier?carrier:assembly(r,true),triangles=[];
     proxy.faces.forEach(face=>{for(let k=1;k<face.length-1;k++) triangles.push(...proxy.v[face[0]],...proxy.v[face[k]],...proxy.v[face[k+1]]);});
     const pickGeometry=new THREE.BufferGeometry();
     pickGeometry.setAttribute('position',new THREE.Float32BufferAttribute(triangles,3));
@@ -179,35 +118,59 @@ function start(){
     // Pick meshes never enter the rendered scene.
     target.updateMatrixWorld();targets.push(target);
   });
-  let selected=-1,frame=0,pendingPointer=null,dragging=false;
+  const motion=carrier?createCarrierMotion(scene,targets,carrier.motion,fragments.map((wire,i)=>[wire,surfaces[i],targets[i]])):null;
+  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  let paused=reducedMotion.matches,time=0,lastTime=null,contextLost=false;
+  const motionButton=motion?document.createElement('button'):null;
+  function updateMotionButton(){if(motionButton){motionButton.textContent=paused?'Resume motion':'Pause motion';motionButton.setAttribute('aria-pressed',String(paused));}}
+  if(motionButton){
+    motionButton.className='motion-toggle';document.querySelector('main').append(motionButton);
+    motionButton.addEventListener('click',()=>{paused=!paused;lastTime=null;updateMotionButton();requestRender();});updateMotionButton();
+  }
+  reducedMotion.addEventListener('change',()=>{paused=reducedMotion.matches;lastTime=null;updateMotionButton();requestRender();});
+  document.addEventListener('visibilitychange',()=>{lastTime=null;if(document.hidden){cancelAnimationFrame(frame);frame=0;}else requestRender();});
+  let selected=-1,pinned=-1,hovered=-1,frame=0,pendingPointer=null,dragging=false;
   const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
   function highlight(index){
-    surfaces.forEach((surface,i)=>surface.visible=i===index);
-    fragments.forEach((f,i)=>{f.material.color.setHex(i===index?0x17212c:0x4191dc);f.material.opacity=i===index?.28:.48;});
+    hovered=index;
+    surfaces.forEach((surface,i)=>surface.visible=i===index||i===pinned);
+    fragments.forEach((f,i)=>{const carrierLine=!projectId&&records[i].id==='01',active=i===index||i===pinned;f.material.color.setHex(carrierLine?0xffffff:active?0x17212c:0x4191dc);f.material.opacity=carrierLine?(active?.85:.55):(active?.28:.48);});
     cursor.classList.toggle('is-target',index>=0);
   }
   function select(index){
-    highlight(index);
+    pinned=index;
+    highlight(-1);
     if(index===selected){requestRender();return;}
     selected=index;
 
     if(!projectId)display(index);
     requestRender();
   }
-  function requestRender(){if(!frame)frame=requestAnimationFrame(render);}
-  function render(){
+  function requestRender(){if(!frame&&!document.hidden&&!contextLost)frame=requestAnimationFrame(render);}
+  function render(now){
     frame=0;
+    if(motion){
+      if(!paused&&lastTime!==null)time+=Math.min((now-lastTime)/1000,.05);
+      lastTime=now;motion.update(time);
+    }
     if(pendingPointer&&!dragging){
       const rect=canvas.getBoundingClientRect();
       pointer.set((pendingPointer.x-rect.left)/rect.width*2-1,-(pendingPointer.y-rect.top)/rect.height*2+1);
       camera.updateMatrixWorld();
       raycaster.setFromCamera(pointer,camera);
       const hit=raycaster.intersectObjects(targets,false)[0];
-      if(hit)select(hit.object.userData.index);else highlight(-1);
+      const index=hit?hit.object.userData.index:-1;
+      if(pendingPointer.click)select(index);
+      else{
+        highlight(index);
+        // A hover previews colour without replacing the pinned inspector.
+        if(pinned<0&&index>=0){selected=index;if(!projectId)display(index);}
+      }
       canvas.style.cursor=hit?'pointer':'grab';
       pendingPointer=null;
     }
     renderer.render(scene,camera);
+    if(motion&&!paused)requestRender();
   }
   function resize(){
     const rect=canvas.getBoundingClientRect();
@@ -224,9 +187,10 @@ function start(){
   let down=null,moved=false;
   canvas.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY};moved=false;});
   canvas.addEventListener('pointermove',e=>{if(down&&Math.hypot(e.clientX-down.x,e.clientY-down.y)>5)moved=true;});
-  canvas.addEventListener('pointerup',e=>{if(down&&!moved){pendingPointer={x:e.clientX,y:e.clientY};requestRender();}down=null;});
+  canvas.addEventListener('pointerup',e=>{if(down&&!moved&&e.button===0){pendingPointer={x:e.clientX,y:e.clientY,click:true};requestRender();}down=null;});
   canvas.addEventListener('pointercancel',()=>{down=null;pendingPointer=null;});
   canvas.addEventListener('pointerleave',()=>{pendingPointer=null;highlight(-1);requestRender();});
+  document.addEventListener('click',event=>{if(event.target!==canvas&&!event.target.closest('.inspector')&&pinned>=0)select(-1);});
   function close(){select(-1);canvas.focus();}
   document.querySelector('#close-detail').onclick=close;
   document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
@@ -246,8 +210,8 @@ function start(){
     spherical.makeSafe();camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(spherical));controls.update();requestRender();
   });
   const observer=new ResizeObserver(resize);observer.observe(canvas);
-  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();});
-  canvas.addEventListener('webglcontextrestored',requestRender);
+  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=true;cancelAnimationFrame(frame);frame=0;lastTime=null;});
+  canvas.addEventListener('webglcontextrestored',()=>{contextLost=false;requestRender();});
   display(-1);resize();
 }
 try{start();}catch(error){
