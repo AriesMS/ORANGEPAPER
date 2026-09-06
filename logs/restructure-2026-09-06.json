@@ -1,0 +1,92 @@
+{
+  "date": "2026-09-06",
+  "reference": "https://medium.com/@mohitkhubchandani88/understanding-web-project-folder-structure-6cc7ae62fb40",
+  "moves": [
+    {
+      "from": "index.html",
+      "to": "public/index.html"
+    },
+    {
+      "from": "interior-segmentation.html",
+      "to": "public/interior-segmentation.html"
+    },
+    {
+      "from": "internal-wall-inference.html",
+      "to": "public/internal-wall-inference.html"
+    },
+    {
+      "from": "facade-to-interior.html",
+      "to": "public/facade-to-interior.html"
+    },
+    {
+      "from": "journey.css",
+      "to": "src/styles/journey.css"
+    },
+    {
+      "from": "facade-study.css",
+      "to": "src/styles/facade-study.css"
+    },
+    {
+      "from": "typography.css",
+      "to": "src/styles/typography.css"
+    },
+    {
+      "from": "journey-source.js",
+      "to": "src/pages/journey.js"
+    },
+    {
+      "from": "facade-study-source.js",
+      "to": "src/pages/facade-study.js"
+    },
+    {
+      "from": "carrier-motion.js",
+      "to": "src/components/carrier-motion.js"
+    },
+    {
+      "from": "construct-geometry.js",
+      "to": "src/components/construct-geometry.js"
+    },
+    {
+      "from": "DESIGN.md",
+      "to": "docs/DESIGN.md"
+    },
+    {
+      "from": "TYPOGRAPHY.md",
+      "to": "docs/TYPOGRAPHY.md"
+    },
+    {
+      "from": "script.js",
+      "to": "docs/archive/legacy-site/script.js"
+    },
+    {
+      "from": "style.css",
+      "to": "docs/archive/legacy-site/style.css"
+    },
+    {
+      "from": "journey.js",
+      "to": "tmp/pre-restructure/journey.js"
+    },
+    {
+      "from": "facade-study.js",
+      "to": "tmp/pre-restructure/facade-study.js"
+    },
+    {
+      "from": "BPS5231_L2_DesignBeyondCode_StudentKit/assets/facade-to-interior/Module_to_facade_graphBoth.png",
+      "to": "public/images/facade-to-interior/Module_to_facade_graphBoth.png"
+    },
+    {
+      "from": "BPS5231_L2_DesignBeyondCode_StudentKit/assets",
+      "to": "assets/research"
+    },
+    {
+      "from": "BPS5231_L2_DesignBeyondCode_StudentKit",
+      "to": "docs/course-kit"
+    }
+  ],
+  "validation": {
+    "npm_test": "3 tests passed: published paths, output boundaries, source imports",
+    "http_preview": "8 requests returned HTTP 200: four pages, two bundles, typography CSS, facade image",
+    "preview_url": "http://127.0.0.1:4173",
+    "remote_changes": "No commit, push, deployment, or hosting settings change performed"
+  }
+}

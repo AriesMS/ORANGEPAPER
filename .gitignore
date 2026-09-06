@@ -1,2 +1,8 @@
-
 node_modules/
+dist/
+tmp/
+logs/*.log
+.DS_Store
+.Rhistory
+*.code-workspace
+*.obj.rsInfo

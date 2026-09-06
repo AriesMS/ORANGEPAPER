@@ -1,5 +1,5 @@
-import { createCarrierMotion } from './carrier-motion.js';
-import { assembly, researchCarrier } from './construct-geometry.js';
+import { createCarrierMotion } from '../components/carrier-motion.js';
+import { assembly, researchCarrier } from '../components/construct-geometry.js';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 let records = [

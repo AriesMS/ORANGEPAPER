@@ -5,6 +5,9 @@
   },
   "private": true,
   "scripts": {
-    "build": "esbuild journey-source.js --bundle --minify --format=iife --outfile=journey.js && esbuild facade-study-source.js --bundle --minify --format=iife --outfile=facade-study.js"
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
+    "start": "npm run build && npm run preview",
+    "test": "npm run build && node --test tests/*.test.mjs"
   }
 }

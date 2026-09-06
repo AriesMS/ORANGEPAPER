@@ -29,9 +29,9 @@ There are no lights or photorealistic materials. Flat colour textures appear on 
 
 ## Typography
 
-All four pages load `typography.css` last. Heading elements, including dynamically inserted inspector titles, use **Bauhaus**. Text, metadata, navigation, and controls use **IBM Plex Mono**. The fonts are resolved from local installations; sans-serif and monospace fallbacks apply on other devices. No font files are bundled.
+All four pages load `src/styles/typography.css` last. Heading elements, including dynamically inserted inspector titles, use **Bauhaus**. Text, metadata, navigation, and controls use **IBM Plex Mono**. The fonts are resolved from local installations; sans-serif and monospace fallbacks apply on other devices. No font files are bundled.
 
-Metadata is small with expanded letter spacing. Titles remain restrained on the home page and become larger within project content. Original Courier New styles and rollback steps are recorded in `../TYPOGRAPHY.md`.
+Metadata is small with expanded letter spacing. Titles remain restrained on the home page and become larger within project content. Original Courier New styles and rollback steps are recorded in `TYPOGRAPHY.md`.
 
 ## Pages and content
 
@@ -52,11 +52,11 @@ The home inspector sits at the right on desktop and becomes a bottom panel below
 
 ## Implementation and current limits
 
-`journey-source.js` owns records, camera, picking, surfaces, and input. `construct-geometry.js` owns fragment assemblies and the branching research carrier. `journey.css` owns the scene and page layouts; `facade-study.css` owns the image study; `typography.css` owns current fonts. `npm run build` uses esbuild to generate the two browser bundles from their source files. Edit source files, then rebuild; HTML script versions control cache refreshes.
+`src/pages/journey.js` owns records, camera, picking, surfaces, and input. `src/components/construct-geometry.js` owns fragment assemblies and the branching research carrier. `src/styles/journey.css` owns the scene and page layouts; `src/styles/facade-study.css` owns the image study; `src/styles/typography.css` owns current fonts. `npm run build` uses esbuild to generate the two browser bundles from their source files. Edit source files, then rebuild; HTML script versions control cache refreshes.
 
-The home carrier runs a time-based walking cycle with three phase-offset articulated legs, rotating spoked wheels, and a blue ground grid scrolling underneath at the wheel travel speed. The grid fades into black fog. The research fragments remain steady for reading and selection. A Pause motion / Resume motion button controls the animation; reduced-motion preferences start it paused, and hidden tabs suspend rendering. Standalone project pages retain rendering on input and resize. `carrier-motion.js` owns the moving rig and ground grid; geometry is reused and only transforms change each frame. Moving parts select record 01. Pixel ratio is capped at 1.75, textures are created once, and simplified project picking meshes are separate from the visible geometry. Carrier picking uses its actual member geometry.
+The home carrier runs a time-based walking cycle with three phase-offset articulated legs, rotating spoked wheels, and a blue ground grid scrolling underneath at the wheel travel speed. The grid fades into black fog. The research fragments remain steady for reading and selection. A Pause motion / Resume motion button controls the animation; reduced-motion preferences start it paused, and hidden tabs suspend rendering. Standalone project pages retain rendering on input and resize. `src/components/carrier-motion.js` owns the moving rig and ground grid; geometry is reused and only transforms change each frame. Moving parts select record 01. Pixel ratio is capped at 1.75, textures are created once, and simplified project picking meshes are separate from the visible geometry. Carrier picking uses its actual member geometry.
 
-The facade study scrolling was restored from commit `646da07` after a static grid stylesheet and incompatible 3D-stage controller had replaced its working layout and behaviour. `facade-study-source.js` now matches the actual image-sequence HTML and builds into `facade-study.js`. Hover, focus, and tap reveal the HDB facade dialogue; Escape dismisses it. The two placeholder project pages remain unfinished. Local-only fonts and the WebGL requirement are current delivery constraints.
+The facade study scrolling was restored from commit `646da07` after a static grid stylesheet and incompatible 3D-stage controller had replaced its working layout and behaviour. `src/pages/facade-study.js` now matches the actual image-sequence HTML and builds into `facade-study.js`. Hover, focus, and tap reveal the HDB facade dialogue; Escape dismisses it. The two placeholder project pages remain unfinished. Local-only fonts and the WebGL requirement are current delivery constraints.
 
 ## Design guardrails
 
@@ -68,4 +68,5 @@ The ground grid uses bright blue `#5cafff` flat mesh strips at 58% opacity, with
 
 A damped spring suspension responds to irregular terrain waves. The carrier heaves gently as a unit; each project has its own mass and smaller delayed bounce. This is a procedural weight simulation, not a collision solver. Visible wires, selected surfaces, and picking meshes share each displacement. Legs follow the carrier’s moving attachment point, while the wheels have a smaller terrain response. Existing pause, reduced-motion, and hidden-tab behaviour remains in effect.
 
-The canonical site design document is [the repository-root DESIGN.md](../DESIGN.md).
+
+Repository paths changed on September 6, 2026. HTML is in `public/`; deployable output is generated in `dist/`. See [the structure guide](STRUCTURE.md) and [root README](../README.md).

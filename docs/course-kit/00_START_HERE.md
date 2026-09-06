@@ -1,3 +1,5 @@
+> This is archived course guidance. For this website use [the current README](../../README.md). Research inputs now live in `assets/research/` at repository root.
+
 # DESIGN BEYOND CODE
 ## Build Your Personal Site with Codex
 
