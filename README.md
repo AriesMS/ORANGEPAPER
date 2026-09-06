@@ -35,3 +35,7 @@ After editing, run `npm run build` and refresh the browser. The preview server s
 Edit `public/index.html` for homepage markup; the previous root `index.html` has moved. Serve **dist/**, not the repository root or public/ alone. Page URLs within the deployed site remain `index.html`, `facade-to-interior.html`, `internal-wall-inference.html`, and `interior-segmentation.html`.
 
 See [design](docs/DESIGN.md), [typography](docs/TYPOGRAPHY.md), [structure and migration](docs/STRUCTURE.md), [deployment](deploy/README.md), and [log policy](logs/README.md).
+
+Deployment automatically runs on pushes to `main` using `.github/workflows/pages.yml`. Keep GitHub Pages → Source set to GitHub Actions; no manual workflow run is needed.
+
+See [adding or implementing pages](docs/ADDING_PAGES.md) for the development workflow and [work log](logs/CHANGELOG.md) for the change history.

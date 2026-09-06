@@ -1,5 +1,6 @@
 # Logs
 
+- `CHANGELOG.md`: maintained record of implementation, restructuring, preview, deployment, and page-authoring changes.
 - `restructure-2026-09-06.json`: tracked record of moves performed during the restructuring.
 - `build.log`: timestamped build successes, written by `npm run build`.
 - `access.log`: local preview requests, written by `npm run preview`.
