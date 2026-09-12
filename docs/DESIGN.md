@@ -70,3 +70,11 @@ A damped spring suspension responds to irregular terrain waves. The carrier heav
 
 
 Repository paths changed on September 6, 2026. HTML is in `public/`; deployable output is generated in `dist/`. See [the structure guide](STRUCTURE.md) and [root README](../README.md).
+
+## Facade project landing
+
+`public/facade-to-interior.html` opens with the centred, intact fragment 02 construct and a single descriptive sentence. `src/components/facade-intro.js` renders four selectable geometry groups with rotation, zoom, and panning. The shared `modernist-material.js` texture matches the homepage and appears only on the active group. Stage links are available on keyboard focus and when WebGL is unavailable.
+
+The four sections run vertically: detection training, photogrammetric context, prediction, and embodied carbon/material cost. Stage 1 displays the panel GIF with a caption; selecting its construct group centers the image in the viewport. GIF source and published copies live in `assets/research/facade-to-interior/stage1fotos/` and `public/images/facade-to-interior/`. Its black padding matches the page.
+
+The existing exploded image sequence follows inside Stage 3 in its own 500svh track; progress is relative to that track. Final project notes remain within the sticky study composition. The fixed return link fades when overlapping visible content, reappears when clear, and remains visible on keyboard focus.

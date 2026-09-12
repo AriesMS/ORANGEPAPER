@@ -5,14 +5,48 @@
 <title>Facade to Interior / Aries' Phd Construct</title>
 <meta name="description" content="Explore the HDB facade module in an exploded image-to-graph research study.">
 <link rel="stylesheet" href="styles/journey.css?v=8">
-<link rel="stylesheet" href="styles/facade-study.css?v=6">
-<script src="scripts/facade-study.js?v=4" defer></script>
+<link rel="stylesheet" href="styles/facade-study.css?v=11">
+<script src="scripts/facade-study.js?v=10" defer></script>
 <link rel="stylesheet" href="styles/typography.css?v=1">
 </head>
 <body class="facade-study">
 <main>
 <a class="return-link" href="index.html">&larr; Back to construct</a>
 <header class="study-heading"><p class="detail-type">FRAGMENT 02 / 2026 / CAADRIA</p><h1>Facade to Interior</h1></header>
+<section class="facade-landing" aria-label="Project introduction">
+<div class="construct-explorer">
+<canvas id="facade-intro-construct" aria-label="Facade to Interior project construct with four interactive geometry groups. Drag to rotate, scroll to zoom, right-drag to pan. Use the stage links for keyboard navigation."></canvas>
+<p class="construct-description">An image-to-graph framework exploring how HDB facades reveal interior structure.</p>
+<nav class="project-stage-nav" aria-label="Project stages">
+<a href="#detection-training">01 / Training of Detection model</a>
+<a href="#photogrammetric-context">02 / 3D photogrammetric context model</a>
+<a href="#prediction-model">03 / Prediction model</a>
+<a href="#carbon-material-cost">04 / Embodied carbon and material cost calculation</a>
+</nav>
+</div>
+</section>
+<section class="project-section" id="detection-training" aria-labelledby="detection-title">
+<p class="detail-type">STAGE 01 / DETECTION</p>
+<h2 id="detection-title">Training of Detection model</h2>
+<figure class="training-panels">
+<img src="images/facade-to-interior/panels_all.gif?v=2" alt="Animated sequence of 97 facade image panels for the detection-model stage." width="1200" height="800" loading="lazy" decoding="async">
+<figcaption>A sequence of 97 facade image panels brings together the building imagery for the detection-model stage. The varied facade arrangements provide visual examples for identifying and annotating building elements before training the model.</figcaption>
+</figure>
+<p class="stage-process">Building images → Annotated facade elements → Detection model</p>
+</section>
+<section class="project-section" id="photogrammetric-context" aria-labelledby="context-title">
+<p class="detail-type">STAGE 02 / SPATIAL CONTEXT</p>
+<h2 id="context-title">3D photogrammetric context model</h2>
+<p>Reconstruct the building context from photographs. The 3D model provides a spatial reference for locating detected facade elements and understanding their relationship to the building.</p>
+<p class="stage-process">Photographs → Photogrammetric reconstruction → 3D building context</p>
+</section>
+<section id="prediction-model" aria-labelledby="prediction-title">
+<header class="project-section prediction-heading">
+<p class="detail-type">STAGE 03 / SPATIAL INFERENCE</p>
+<h2 id="prediction-title">Prediction model</h2>
+<p>Translate facade geometry into graph representations to infer the interior layout. The study connects the building module, facade geometry, structural graph, and facade graph.</p>
+</header>
+<section class="study-scroll-track" id="facade-study-sequence" aria-label="Exploded facade study">
 <div class="scroll-sequence" tabindex="0" aria-label="Exploded study. Scroll down or use the right arrow key to move through the stages.">
 <section class="module-view scroll-stage" aria-label="HDB building module from the exploded project image">
 <h2 class="stage-label">01 / HDB building module</h2>
@@ -43,7 +77,14 @@
 </article>
 </section>
 </div>
-<p class="scroll-hint">SCROLL TO EXPLORE &rarr;</p>
+</section>
+</section>
+<section class="project-section" id="carbon-material-cost" aria-labelledby="carbon-title">
+<p class="detail-type">STAGE 04 / MATERIAL ASSESSMENT</p>
+<h2 id="carbon-title">Embodied carbon and material cost calculation</h2>
+<p>Use the predicted interior layout to derive material quantities, then combine these with embodied carbon factors and material unit costs to estimate the impact and cost of the inferred construction.</p>
+<p class="stage-process">Predicted layout → Material quantities → Embodied carbon + material cost</p>
+</section>
 </main>
 </body>
 </html>

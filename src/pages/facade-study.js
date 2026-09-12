@@ -1,3 +1,4 @@
+import { showFacadeIntro } from '../components/facade-intro.js';
 // Restored from 646da07: native scrolling drives the exploded image sequence.
 const target=document.querySelector('.facade-target');
 const crop=document.querySelector('.model-crop');
@@ -15,6 +16,7 @@ document.addEventListener('pointerdown',event=>{if(!event.target.closest('.model
 
 // Native page scrolling drives a fixed composition, so earlier fragments stay visible.
 const sequence=document.querySelector('.scroll-sequence');
+const track=document.querySelector('.study-scroll-track');
 const stages=[...sequence.querySelectorAll('.scroll-stage:not(.end-stage)')];
 const ending=sequence.querySelector('.end-stage');
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
@@ -30,7 +32,7 @@ function pose(index,step,w,h){
 function layout(){
   scheduled=false;
   const w=window.innerWidth,h=window.innerHeight;
-  const progress=clamp(window.scrollY/Math.max(1,document.documentElement.scrollHeight-h)*4,0,4);
+  const progress=clamp((window.scrollY-track.offsetTop)/Math.max(1,track.offsetHeight-h)*4,0,4);
   const step=Math.min(3,Math.floor(progress)),t=progress-step;
   const eased=t*t*(3-2*t);
   stages.forEach((stage,index)=>{
@@ -46,6 +48,7 @@ function layout(){
   ending.style.transform=`translateY(${(1-finalReveal)*35}px)`;
   ending.inert=finalReveal<.95;
   ending.style.pointerEvents=finalReveal>.95?'auto':'none';
+  updateReturnLink();
 }
 function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(layout);}}
 window.addEventListener('scroll',schedule,{passive:true});
@@ -57,4 +60,31 @@ sequence.addEventListener('keydown',event=>{
   if(['ArrowLeft','ArrowUp','PageUp'].includes(event.key))direction=-1;
   if(direction){event.preventDefault();window.scrollBy({top:direction*window.innerHeight,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
 });
+// Keep the fixed return link clear of visible text and imagery.
+const returnLink=document.querySelector('.return-link');
+const overlapContent=[...document.querySelectorAll('main h1,main h2,main p,main figcaption,main img,main canvas,.end-dialogue')];
+function updateReturnLink(){
+  const link=returnLink.getBoundingClientRect(),gap=8;
+  const overlaps=overlapContent.some(element=>{
+    if(element.closest('[aria-hidden="true"],[hidden]'))return false;
+    for(let parent=element;parent&&parent!==document.body;parent=parent.parentElement){
+      const style=getComputedStyle(parent);
+      if(style.display==='none'||style.visibility==='hidden'||Number(style.opacity)<.05)return false;
+    }
+    // Use the clipping box for the oversized images in the exploded study.
+    const box=(element.closest('.model-crop,.explosion-crop')||element).getBoundingClientRect();
+    return box.width>0&&box.height>0&&box.left<link.right+gap&&box.right>link.left-gap&&box.top<link.bottom+gap&&box.bottom>link.top-gap;
+  });
+  returnLink.classList.toggle('is-obscured',overlaps);
+}
+// Stage 1 lands on the animation's centre, preserving the other stage targets.
+const trainingImage=document.querySelector('.training-panels img');
+document.querySelector('.project-stage-nav a[href="#detection-training"]').addEventListener('click',event=>{
+  event.preventDefault();
+  trainingImage.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+});
+new ResizeObserver(schedule).observe(document.querySelector('main'));
 layout();
+
+// The image study remains functional even if WebGL is unavailable.
+showFacadeIntro();

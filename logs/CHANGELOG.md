@@ -16,3 +16,19 @@
 - Validation: `npm test` rebuilds and verifies published HTML dependencies, output boundaries, and source imports. Git whitespace checks are performed before commit.
 
 This entry describes the prepared changes; commit/push confirmation is reported separately after Git succeeds. Workflow trigger configuration does not itself confirm a successful deployment.
+
+## Facade landing section
+
+Added centred project 02 geometry, an editable right-side introduction (`public/facade-to-interior.html`, `#landing-copy`), and links down to the study. Moved the existing scroll sequence into a separate track and made its progress relative to that section. Mobile layout stacks the text below the preview. Build and path tests passed.
+
+
+## 2026-09-12 — Facade-to-interior stages and detection animation
+
+- Reused the homepage's intact fragment 02 geometry as the landing construct. Its pods/antenna, collar, core, and supports link to stages 1–4 respectively, with rotation, zoom, and panning.
+- Shared the homepage modernist texture generator so hovered geometry groups reveal the same red, yellow, blue, cream, and black pattern; inactive groups remain wireframe.
+- Added vertically ordered detection training, photogrammetric context, prediction, and embodied-carbon/material-cost sections. Preserved the exploded facade study inside Stage 3.
+- Replaced the preliminary landing introduction panel with one descriptive sentence and removed visible navigation prompts. Stage links remain available on keyboard focus and as a WebGL fallback.
+- Created a looping 97-frame panel GIF (1200 × 800, 800 ms per frame), retained it in `assets/research/facade-to-interior/stage1fotos/`, and published a copy under `public/images/facade-to-interior/` with a Stage 1 caption. GIF padding matches the black page background.
+- Stage 1 selection centers the GIF in the viewport. The fixed return link fades while overlapping visible page content and reappears when clear; keyboard focus restores visibility.
+- Validation: all three `npm test` checks passed; the four geometry groups were checked against the full assembly's faces and edges; all 97 GIF frames were decoded and padded corners checked for black. Browser interaction was not visually verified.
+- Generated `dist/` output and operational logs remain gitignored. Unrelated raw research imports and file-permission changes are outside this commit.

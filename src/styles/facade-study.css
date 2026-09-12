@@ -36,3 +36,71 @@
 
 /* Keep the restored study aligned with the current site typography. */
 .facade-study .scroll-hint{font-family:var(--site-text-font)}
+
+/* Project introduction, followed by the original five-viewport scroll study. */
+.facade-study main{height:auto;min-height:100svh}
+.facade-study .study-heading{position:absolute;top:90px}
+.facade-landing{position:relative;min-height:100svh;display:flex;align-items:center;padding:190px 5vw 90px}
+#facade-intro-construct{position:absolute;left:25%;top:18svh;width:50%;height:70svh;touch-action:pan-y;cursor:grab}
+.landing-copy{position:relative;z-index:1;margin-left:auto;width:24%;padding:24px;background:#000e;border-left:1px solid #365d80;color:#91bade}
+.landing-copy h2{font-size:25px;line-height:1.2;color:#c8e4ff}
+.landing-copy p{font-size:12px;line-height:1.9}
+.landing-copy .detail-type{font-size:9px}
+.landing-copy a,.landing-scroll{color:#91bade;font-size:11px;line-height:1.8;text-decoration:none}
+.landing-copy a{display:block;margin-top:24px;border-top:1px solid #365d80;padding-top:14px}
+.landing-scroll{position:absolute;bottom:30px;left:6vw}
+.study-scroll-track{position:relative;height:500svh}
+.study-scroll-track .end-stage{position:absolute}
+.facade-intro-error{position:absolute;left:28%;top:45%;width:40%;font-size:12px;color:#91bade}
+@media(max-width:800px){
+.facade-study .study-heading{top:75px}
+.facade-landing{display:block;padding:160px 24px 75px}
+#facade-intro-construct{position:relative;left:auto;top:auto;width:100%;height:45svh}
+.landing-copy{margin:0;width:100%;padding:18px 22px}
+.landing-copy h2{font-size:22px}
+.landing-scroll{bottom:22px;left:24px}
+.facade-intro-error{position:relative;left:auto;top:auto;width:auto}
+}
+
+/* Four-stage project navigation and overview. */
+html{scroll-behavior:smooth}
+.construct-explorer{position:relative;width:68%;text-align:center}
+#facade-intro-construct{position:relative;left:auto;top:auto;width:100%;height:58svh;touch-action:none}
+#construct-stage-label{min-height:2.8em;margin:0;color:#c8e4ff;font-size:13px}
+.construct-help{font-size:10px;line-height:1.8;color:#7793ac}
+.construct-reset{background:transparent;border:1px solid #365d80;padding:8px 14px;color:#91bade;cursor:pointer;font:inherit;font-size:11px}
+.landing-copy{width:30%}
+.project-stage-nav a{margin-top:10px;padding:10px 0;transition:color .15s}
+.project-stage-nav a:is(:hover,:focus-visible,.is-hovered){color:#fff}
+.project-stage-nav a:nth-child(1):is(:hover,:focus-visible,.is-hovered){color:#f2c928}
+.project-stage-nav a:nth-child(2):is(:hover,:focus-visible,.is-hovered){color:#174bb5}
+.project-stage-nav a:nth-child(3):is(:hover,:focus-visible,.is-hovered){color:#d82d24}
+.project-stage-nav a:nth-child(4):is(:hover,:focus-visible,.is-hovered){color:#eee9da}
+.project-section{min-height:75svh;padding:110px 10vw 90px;border-top:1px solid #203345;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;scroll-margin-top:35px}
+.project-section h2{max-width:850px;font-size:clamp(28px,4vw,54px);font-weight:400;line-height:1.15;color:#c8e4ff;margin:20px 0}
+.project-section>p:not(.detail-type){max-width:720px;font-size:15px;line-height:1.9;color:#91bade}
+.project-section .stage-process{padding:24px 0;border-top:1px solid #203345;margin-top:30px}
+.project-section a{font-size:12px;color:#91bade;margin-top:24px}
+.prediction-heading{min-height:50svh}
+#prediction-model{scroll-margin-top:35px}
+@media(max-width:800px){.construct-explorer,.landing-copy{width:100%}#facade-intro-construct{height:45svh}.construct-explorer{margin-bottom:28px}.project-section{padding:90px 24px 60px;min-height:70svh}.prediction-heading{min-height:50svh}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-stage-nav a{transition:none}}
+
+/* Minimal landing and detection imagery. Stage links appear on keyboard focus. */
+.facade-landing{justify-content:center}
+.construct-explorer{width:min(100%,1100px);margin:0 auto}
+.construct-description{margin:20px auto 0;max-width:850px;color:#91bade;font-size:14px;line-height:1.8}
+.project-stage-nav:not(:focus-within):not(.is-fallback){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.project-stage-nav:focus-within,.project-stage-nav.is-fallback{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:20px}
+.project-stage-nav a{color:#91bade;font-size:12px}
+.training-panels{width:min(100%,1200px);margin:25px 0 0}
+.training-panels img{display:block;width:100%;height:auto}
+.training-panels figcaption{max-width:850px;margin-top:24px;color:#91bade;font-size:15px;line-height:1.9}
+@media(max-width:800px){.construct-description{font-size:13px}.training-panels figcaption{font-size:14px}}
+
+.training-panels{align-self:center}
+.training-panels img{max-height:78svh;object-fit:contain;background:#000}
+.facade-study .return-link{transition:opacity .2s ease}
+.facade-study .return-link.is-obscured{opacity:0;pointer-events:none}
+.facade-study .return-link:focus-visible{opacity:1;pointer-events:auto;background:#000}
+@media(prefers-reduced-motion:reduce){.facade-study .return-link{transition:none}}

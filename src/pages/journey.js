@@ -1,3 +1,4 @@
+import {colourTexture} from '../components/modernist-material.js';
 import { createCarrierMotion } from '../components/carrier-motion.js';
 import { assembly, researchCarrier } from '../components/construct-geometry.js';
 import * as THREE from 'three';
@@ -61,20 +62,6 @@ function start(){
   document.addEventListener('pointerleave',()=>cursor.classList.remove('is-visible'));
   window.addEventListener('blur',()=>cursor.classList.remove('is-visible'));
   // Small textures are uploaded once; no per-frame painting or geometry rebuilds.
-  function colourTexture(index){
-    const tile=document.createElement('canvas');tile.width=tile.height=256;
-    const c=tile.getContext('2d');
-    const palette=['#d82d24','#f2c928','#174bb5'];
-    c.fillStyle='#eee9da';c.fillRect(0,0,256,256);
-    c.fillStyle=palette[index%3];c.fillRect(0,0,160,152);
-    c.fillStyle=palette[(index+1)%3];c.fillRect(170,164,86,92);
-    c.fillStyle=palette[(index+2)%3];c.fillRect(0,204,72,52);
-    c.fillStyle='#101317';c.fillRect(158,0,9,256);c.fillRect(0,152,256,9);
-    c.fillRect(0,196,158,8);c.fillRect(72,204,8,52);
-    c.strokeStyle='#101317';c.lineWidth=8;c.strokeRect(0,0,256,256);
-    const texture=new THREE.CanvasTexture(tile);texture.colorSpace=THREE.SRGBColorSpace;
-    texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());return texture;
-  }
   const pickMaterial=new THREE.MeshBasicMaterial({side:THREE.DoubleSide});
   const carrier=projectId?null:researchCarrier(records.filter(r=>r.id!=='01'));
   records.forEach((r,index)=>{
@@ -106,7 +93,7 @@ function start(){
     solidGeometry.setAttribute('position',new THREE.Float32BufferAttribute(solidPositions,3));
     solidGeometry.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));
     if(isCarrier)solidGeometry.setAttribute('color',new THREE.Float32BufferAttribute(solidColours,3));
-    const solid=new THREE.Mesh(solidGeometry,new THREE.MeshBasicMaterial({map:isCarrier?null:colourTexture(index),color:0xffffff,vertexColors:!!isCarrier,transparent:!!isCarrier,opacity:isCarrier?.28:1,depthWrite:!isCarrier,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1}));
+    const solid=new THREE.Mesh(solidGeometry,new THREE.MeshBasicMaterial({map:isCarrier?null:colourTexture(renderer,index),color:0xffffff,vertexColors:!!isCarrier,transparent:!!isCarrier,opacity:isCarrier?.28:1,depthWrite:!isCarrier,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1}));
     solid.visible=false;root.add(solid);surfaces.push(solid);
     const proxy=isCarrier?carrier:assembly(r,true),triangles=[];
     proxy.faces.forEach(face=>{for(let k=1;k<face.length-1;k++) triangles.push(...proxy.v[face[0]],...proxy.v[face[k]],...proxy.v[face[k+1]]);});

@@ -26,7 +26,8 @@ return {v,faces,edges:[...edges.values()]};}
 // collars, antennae and articulated supports. All parts share one pick target.
 export function assembly(r, coarse=false, stage=null){
   const result={v:[],faces:[],edges:[]};
-  let currentStage=1;
+  // Stage groups partition the original geometry without changing the full assembly.
+  let currentStage=3;
   function part(type,position,scale,angle=0){
     if(stage!==null && stage!==currentStage)return;
     const g=geometry(type,coarse),offset=result.v.length;
@@ -42,9 +43,10 @@ export function assembly(r, coarse=false, stage=null){
     const n=result.v.length;result.v.push(a,b);result.edges.push([n,n+1]);
   }
   part(r.shape,[0,0,0],r.shape==='sphere'?[1,.68,.8]:[.78,.78,.78]);
+  currentStage=2;
   part('torus',[0,-.38,0],[1.04,.38,1.04],.15);
   // Asymmetric satellite pods and projecting gantries.
-  currentStage=2;
+  currentStage=1;
   const flip=Number(r.id)%2?1:-1;
   for(let k=0;k<3;k++){
     const x=flip*(.65+k*.25),y=.4+k*.36,z=(k-1)*.48;
@@ -52,7 +54,7 @@ export function assembly(r, coarse=false, stage=null){
     strut([0,.1,0],[x,y,z]);
     part('box',[x*.5,y*.5,z*.5],[.035,.035,.5],.6);
   }
-  currentStage=3;
+  currentStage=4;
   for(let side of [-1,1]){
     const a=[side*.5,-.45,.15],b=[side*1.02,-1.1,.25],c=[side*.82,-1.5,.65];
     strut(a,b);strut(b,c);
@@ -61,7 +63,7 @@ export function assembly(r, coarse=false, stage=null){
     part('sphere',b,[.1,.1,.1]);
     part('box',c,[.25,.045,.25]);
   }
-  currentStage=2;
+  currentStage=1;
   strut([-.3,.4,0],[-.5,1.75,.1]);
   part('torus',[-.5,1.75,.1],[.28,.28,.12],.5);
   const rotation=new THREE.Euler(...r.rotation,'XYZ');
