@@ -104,3 +104,18 @@ html{scroll-behavior:smooth}
 .facade-study .return-link.is-obscured{opacity:0;pointer-events:none}
 .facade-study .return-link:focus-visible{opacity:1;pointer-events:auto;background:#000}
 @media(prefers-reduced-motion:reduce){.facade-study .return-link{transition:none}}
+
+/* Textured photogrammetry model, loaded as this section approaches the viewport. */
+.photogrammetry-study{width:100%;margin:28px 0 0}
+.photogrammetry-viewer{position:relative;width:100%;border:1px solid #203345;background:radial-gradient(ellipse at center,#111d28,#05090d 75%)}
+.photogrammetry-viewer canvas{display:block;width:100%;height:clamp(360px,65svh,760px);touch-action:none;cursor:grab}
+.photogrammetry-viewer canvas:active{cursor:grabbing}
+.photogrammetry-viewer canvas:focus-visible{outline:2px solid #91bade;outline-offset:3px}
+.photogrammetry-status{position:absolute;top:45%;left:10%;width:80%;text-align:center;color:#91bade;font-size:13px;pointer-events:none}
+.photogrammetry-status:empty{display:none}
+.photogrammetry-controls{position:absolute;right:16px;bottom:16px;display:flex;gap:8px}
+.photogrammetry-controls button{padding:10px 15px;min-width:44px;min-height:44px;border:1px solid #365d80;background:#060d14eF;color:#c8e4ff;font:inherit;font-size:14px;cursor:pointer}
+.photogrammetry-controls button:disabled{opacity:.35;cursor:default}
+.photogrammetry-controls button:is(:hover,:focus-visible):enabled{border-color:#c8e4ff;background:#172b3d}
+.photogrammetry-study figcaption{margin-top:16px;color:#91bade;font-size:12px;line-height:1.9}
+@media(max-width:650px){.photogrammetry-viewer canvas{height:55svh;min-height:340px}.photogrammetry-controls{right:10px;bottom:10px}}

@@ -1,4 +1,5 @@
 import { showFacadeIntro } from '../components/facade-intro.js';
+import { showPhotogrammetry } from '../components/photogrammetry-viewer.js';
 // Restored from 646da07: native scrolling drives the exploded image sequence.
 const target=document.querySelector('.facade-target');
 const crop=document.querySelector('.model-crop');
@@ -88,3 +89,4 @@ layout();
 
 // The image study remains functional even if WebGL is unavailable.
 showFacadeIntro();
+showPhotogrammetry();
