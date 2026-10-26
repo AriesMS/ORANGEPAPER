@@ -18,7 +18,7 @@ After editing, run `npm run build` and refresh the browser. The preview server s
 
 | Location | Purpose |
 | --- | --- |
-| `public/` | Four editable HTML pages and the published facade image |
+| `public/` | Five editable HTML pages and the published facade image |
 | `src/pages/` | Home construct and facade scrolling entry scripts |
 | `src/components/` | Shared geometry and carrier motion |
 | `src/styles/` | Editable CSS and typography |
@@ -32,7 +32,7 @@ After editing, run `npm run build` and refresh the browser. The preview server s
 | `deploy/` | Hosting instructions |
 | `tmp/` | Ignored pre-move bundle snapshots and temporary files |
 
-Edit `public/index.html` for homepage markup; the previous root `index.html` has moved. Serve **dist/**, not the repository root or public/ alone. Page URLs within the deployed site remain `index.html`, `facade-to-interior.html`, `internal-wall-inference.html`, and `interior-segmentation.html`.
+Edit `public/index.html` for homepage markup; the previous root `index.html` has moved. Serve **dist/**, not the repository root or public/ alone. Page URLs within the deployed site remain `index.html`, `facade-to-interior.html`, `internal-wall-inference.html`, `interior-segmentation.html`, and `reading-list.html`.
 
 See [design](docs/DESIGN.md), [typography](docs/TYPOGRAPHY.md), [structure and migration](docs/STRUCTURE.md), [deployment](deploy/README.md), and [log policy](logs/README.md).
 

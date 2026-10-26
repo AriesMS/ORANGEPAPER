@@ -4,17 +4,17 @@ Current implementation, September 2026. This replaces the original pastel portfo
 
 ## Purpose and identity
 
-Aries Yang’s research portfolio is presented as an inhabitable computational research construct. The home page connects eight research, work, teaching, and practice fragments through an interactive three-dimensional composition. The character is architectural, technical, and playful. A quiet black field and fine blue wirework give the geometry priority; a small title identifies the site at the upper left.
+Aries Yang’s research portfolio is presented as an inhabitable computational research construct. The home page connects nine research, work, teaching, practice, and reading fragments through an interactive three-dimensional composition. The character is architectural, technical, and playful. A quiet black field and fine blue wirework give the geometry priority; a small title identifies the site at the upper left.
 
 ## Research hierarchy and geometry
 
-01, PhD / Computational architecture, is a whimsical walking-tree carrier. A small version of the original machine assembly retains its pod, collar, antenna, and articulated appendages near the base. A crooked double spine grows upward through the composition, with seven curved, under-slung bridge branches that terminate beneath the actual lowest points of the individual constructs. Three animated splayed walking legs, two spoked wheels, and a short incomplete spiral stair give it an eccentric, inhabitable character. There is no perimeter frame, enclosing cage, broad deck, or massive trunk.
+01, PhD / Computational architecture, is a whimsical walking-tree carrier. A small version of the original machine assembly retains its pod, collar, antenna, and articulated appendages near the base. A crooked double spine grows upward through the composition, with eight curved, under-slung bridge branches that terminate beneath the actual lowest points of the individual constructs. Three animated splayed walking legs, two spoked wheels, and a short incomplete spiral stair give it an eccentric, inhabitable character. There is no perimeter frame, enclosing cage, broad deck, or massive trunk.
 
 The architectural proposition is a mobile city of research ideas: the individual constructs are the inhabitants and remain the visual focus. The carrier uses yellow `#f2c928`, vermilion `#e34b32`, blue `#368cce`, and cream `#eee9da` as an Archigram-inspired graphic palette. Colour is visible at rest with 55% wire opacity and brightens to 85% on selection; selected member surfaces retain their colours at 28% opacity. Projects retain their blue wirework and opaque primary-colour patchwork on selection. Supporting arms have stronger upper members, deeper under-slung arches, cross-ties, and cream bearing forks. Three additional arms extend left, right, and upward beyond the project bounds, ending in empty docking forks for future work. These belong to 01 and do not create fictional project records. Picking follows the carrier's actual small core and members, leaving the spaces between branches open. The form is conceptual rather than an engineered structural analysis.
 
 References: [Archigram’s archive at M+](https://www.mplus.org.hk/en/collection/archives/archigram-archive-ca36/) informs the mobile, assembled city and plug-in research fragments. [Piranesi’s The Drawbridge at the Smithsonian](https://www.si.edu/object/drawbridge-plate-vii-series-carceri-dinvenzione%3Achndm_1959-182-6) informs bridges, suspended circulation, and the incomplete stair. The user's Howl’s Moving Castle reference informs the eccentric walking-machine character. These are interpreted through thin wirework and negative space rather than masonry mass or a literal castle silhouette.
 
-02–08 retain their independently tilted, asymmetric assemblies: a primitive core, collar, satellite pods, projecting gantries, antennae, articulated supports, and feet. Boxes and pyramids carry dense wire grids; spheres and toruses carry curved lattices. The seven fragments retain their existing positions, rotations, and scales. The home camera is pulled back to frame the larger assembly. The standalone project pages retain their closer camera view.
+02–09 retain their independently tilted, asymmetric assemblies: a primitive core, collar, satellite pods, projecting gantries, antennae, articulated supports, and feet. Boxes and pyramids carry dense wire grids; spheres and toruses carry curved lattices. Fragments 02–08 retain their existing positions, rotations, and scales. Fragment 09, Reading List, sits to the right as a smaller box assembly on its own supporting branch. The home camera is pulled back to frame the larger assembly. The standalone project pages retain their closer camera view.
 
 ## Colour and material
 
@@ -29,7 +29,7 @@ There are no lights or photorealistic materials. Flat colour textures appear on 
 
 ## Typography
 
-All four pages load `src/styles/typography.css` last. Heading elements, including dynamically inserted inspector titles, use **Bauhaus**. Text, metadata, navigation, and controls use **IBM Plex Mono**. The fonts are resolved from local installations; sans-serif and monospace fallbacks apply on other devices. No font files are bundled.
+All five pages load `src/styles/typography.css` last. Heading elements, including dynamically inserted inspector titles, use **Bauhaus**. Text, metadata, navigation, and controls use **IBM Plex Mono**. The fonts are resolved from local installations; sans-serif and monospace fallbacks apply on other devices. No font files are bundled.
 
 Metadata is small with expanded letter spacing. Titles remain restrained on the home page and become larger within project content. Original Courier New styles and rollback steps are recorded in `TYPOGRAPHY.md`.
 
@@ -37,12 +37,13 @@ Metadata is small with expanded letter spacing. Titles remain restrained on the 
 
 | Page | Current implementation |
 | --- | --- |
-| `index.html` | Full viewport research carrier with eight selectable records. The inspector shows fragment number, title, period, context, description, and project links where available. |
+| `index.html` | Full viewport research carrier with nine selectable records. The inspector shows fragment number, title, period, context, description, and project links where available. |
 | `facade-to-interior.html` | Four image crops from the HDB module-to-graph illustration: building module, facade geometry, structural graph, and facade graph; followed by project notes. Native vertical scrolling drives a fixed exploded composition: each crop comes forward in turn, earlier crops shrink to the side, and the final view arranges all four above project notes. Arrow and Page keys advance the focused sequence. Images receive a blue-toned inversion treatment. |
+| `reading-list.html` | Rotatable fragment 09 and an empty reading list awaiting supplied readings, using the shared project layout and return link. |
 | `internal-wall-inference.html` | Rotatable fragment 03 with a short description and an explicit project-in-preparation message. |
 | `interior-segmentation.html` | Rotatable fragment 04 with a short description and an explicit project-in-preparation message. |
 
-The home inspector opens links for fragments 02, 03, and 04. The other records currently provide contextual text, without separate pages. Every project page has a return-to-construct link.
+The home inspector opens links for fragments 02, 03, 04, and 09. The other records currently provide contextual text, without separate pages. Every project page has a return-to-construct link.
 
 ## Interaction and responsive layout
 

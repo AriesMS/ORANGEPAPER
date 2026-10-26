@@ -11,7 +11,8 @@ let records = [
   {id:'05',title:'Generative Design / NUS',year:'Mar 2024 – Present',type:'RESEARCH EXPERIENCE',place:'Creative Design Critical Data Lab, NUS',text:'Researcher working on generative design modelling with AI.',shape:'box',p:[-.7,-1.65,.1],s:.8},
   {id:'06',title:'Future Cities Lab Global',year:'Mar 2024 – Aug 2025',type:'RESEARCH EXPERIENCE',place:'Singapore-ETH Centre',text:'Researcher in generative design modelling with AI at Future Cities Lab Global.',shape:'sphere',p:[-1.4,-.65,-1.1],s:.75},
   {id:'07',title:'Teaching / NUS',year:'Aug 2025 – Present',type:'TEACHING EXPERIENCE',place:'National University of Singapore',text:'Adjunct Teaching Fellow at NUS, alongside an ongoing research practice.',shape:'pyramid',p:[.3,1.85,-.9],s:.65},
-  {id:'08',title:'Architecture / Practice',year:'Jun – Jul 2022',type:'PROFESSIONAL EXPERIENCE',place:'DP Architects',text:'Architecture internship: an early chapter in the journey from architectural practice to computational research.',shape:'box',p:[.8,-1.25,-1.1],s:.65}
+  {id:'08',title:'Architecture / Practice',year:'Jun – Jul 2022',type:'PROFESSIONAL EXPERIENCE',place:'DP Architects',text:'Architecture internship: an early chapter in the journey from architectural practice to computational research.',shape:'box',p:[.8,-1.25,-1.1],s:.65},
+  {id:'09',title:'Reading List',year:'Ongoing',type:'READING & REFERENCES',place:'Computational architecture',text:'A growing reading list for the research construct: architecture, computational design, and spatial inference.',shape:'box',p:[3,.8,-.2],s:.65,link:'reading-list.html',action:'OPEN READING LIST'}
 ];
 // A spatial constellation: offset centres and independent X/Y/Z tilts (radians).
 // Shared by the visible wires and picking surfaces.
@@ -23,16 +24,18 @@ const arrangement = [
   {p:[-.65,-1.8,-1.2], rotation:[-.7,-.8,1.05]},
   {p:[-1.85,-.25,-1.65], rotation:[.6,1.2,-.3]},
   {p:[.15,2.05,.8], rotation:[-1.05,.35,-.9]},
-  {p:[.85,-1.65,-.5], rotation:[.9,-1.1,.5]}
+  {p:[.85,-1.65,-.5], rotation:[.9,-1.1,.5]},
+  {p:[3,.8,-.2], rotation:[-.35,.6,.25]}
 ];
 records=records.map((record,i)=>({...record,...arrangement[i]}));
+const recordCount=String(records.length).padStart(2,'0');
 const projectId=document.body.dataset.project;
 if(projectId) records=records.filter(r=>r.id===projectId).map(r=>({...r,p:[0,0,0],s:1.25}));
 
 const canvas=document.querySelector('#construct');
 const detail=document.querySelector('#detail');
 const inspector=document.querySelector('.inspector');
-function display(i){inspector.hidden=i<0;if(i<0){detail.innerHTML='';return;}const r=records[i];detail.innerHTML=`<p class="detail-number">${r.id}<span style="font-size:12px;letter-spacing:0"> / 08</span></p><span class="detail-type">${r.type}</span><h2>${r.title}</h2><dl><div><dt>PERIOD</dt><dd>${r.year}</dd></div><div><dt>CONTEXT</dt><dd>${r.place}</dd></div></dl><p class="description">${r.text}</p>${r.link&&!projectId?`<a class="project-action" href="${r.link}">OPEN PROJECT ↗</a>`:''}`;}
+function display(i){inspector.hidden=i<0;if(i<0){detail.innerHTML='';return;}const r=records[i];detail.innerHTML=`<p class="detail-number">${r.id}<span style="font-size:12px;letter-spacing:0"> / ${recordCount}</span></p><span class="detail-type">${r.type}</span><h2>${r.title}</h2><dl><div><dt>PERIOD</dt><dd>${r.year}</dd></div><div><dt>CONTEXT</dt><dd>${r.place}</dd></div></dl><p class="description">${r.text}</p>${r.link&&!projectId?`<a class="project-action" href="${r.link}">${r.action||'OPEN PROJECT'} ↗</a>`:''}`;}
 
 function start(){
   const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
